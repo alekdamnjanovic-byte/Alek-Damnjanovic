@@ -1,0 +1,84 @@
+<section id="contact" class="section contact">
+  <div class="container">
+    <p class="section-label">// get in touch</p>
+    <h2 class="section-title">Contact <span>Me</span></h2>
+    <div class="section-divider"></div>
+
+    <div class="contact__layout">
+      <!-- Left: Info -->
+      <div class="contact__info">
+        <p class="contact__intro">
+          I'm currently looking for new opportunities. Whether you have a question,
+          a project in mind, or just want to say hi — my inbox is always open!
+        </p>
+
+        <ul class="contact__list">
+          @for (item of contactInfo; track item.label) {
+            <li class="contact__item">
+              <span class="contact__item-icon" [innerHTML]="item.icon"></span>
+              <div>
+                <span class="contact__item-label">{{ item.label }}</span>
+                <a [href]="item.href" target="_blank" rel="noopener" class="contact__item-value">
+                  {{ item.value }}
+                </a>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact__form-wrap">
+        @if (!sent()) {
+          <form class="contact__form" (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="contact__field">
+              <label for="name" class="contact__label">Name</label>
+              <input
+                id="name"
+                type="text"
+                class="contact__input"
+                placeholder="John Doe"
+                [(ngModel)]="name"
+                name="name"
+                required
+              />
+            </div>
+            <div class="contact__field">
+              <label for="email" class="contact__label">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="contact__input"
+                placeholder="john@example.com"
+                [(ngModel)]="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="contact__field">
+              <label for="message" class="contact__label">Message</label>
+              <textarea
+                id="message"
+                class="contact__input contact__input--textarea"
+                placeholder="Let's build something great..."
+                [(ngModel)]="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary contact__submit">
+              Send Message
+            </button>
+          </form>
+        } @else {
+          <div class="contact__success">
+            <span class="contact__success-icon">✓</span>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you soon.</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

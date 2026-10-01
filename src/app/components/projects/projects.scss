@@ -1,0 +1,115 @@
+.projects {
+  background: var(--color-bg-alt);
+
+  &__featured {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__other-title {
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 600px) { grid-template-columns: 1fr; }
+  }
+
+  &__card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+
+    &:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    &-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    &-desc {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    &--featured {
+      .projects__card-title { font-size: 1.25rem; }
+      .projects__card-desc  { font-size: 0.93rem; }
+    }
+  }
+
+  &__folder {
+    color: var(--color-primary);
+    opacity: 0.8;
+  }
+
+  &__links {
+    display: flex;
+    gap: 12px;
+
+    a {
+      color: var(--color-text-muted);
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+
+      &:hover { color: var(--color-primary); }
+    }
+  }
+
+  &__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &__tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-accent);
+    background: rgba(0, 212, 170, 0.07);
+    border: 1px solid rgba(0, 212, 170, 0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  &__cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+}

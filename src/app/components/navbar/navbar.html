@@ -1,0 +1,24 @@
+<nav class="navbar" [class.navbar--scrolled]="scrolled()">
+  <div class="navbar__inner">
+    <a href="#" class="navbar__logo">
+      <span class="navbar__logo-bracket">&lt;</span>
+      Alek
+      <span class="navbar__logo-bracket">/&gt;</span>
+    </a>
+
+    <ul class="navbar__links" [class.navbar__links--open]="menuOpen()">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a [href]="link.href" class="navbar__link" (click)="closeMenu()">{{ link.label }}</a>
+        </li>
+      }
+      <li>
+        <a href="assets/resume.pdf" target="_blank" class="btn btn--outline navbar__resume">Resume</a>
+      </li>
+    </ul>
+
+    <button class="navbar__burger" (click)="toggleMenu()" [class.navbar__burger--open]="menuOpen()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,124 @@
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--navbar-h));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  // Decorative dot-grid background
+  &__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(79, 142, 247, 0.12) 1px, transparent 0);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    padding-top: 40px;
+    padding-bottom: 100px;
+  }
+
+  &__greeting {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--color-accent);
+    margin-bottom: 16px;
+    letter-spacing: 0.08em;
+  }
+
+  &__name {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+    font-weight: 800;
+    color: var(--color-text);
+    line-height: 1.05;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  &__role {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+    min-height: 1.2em;
+  }
+
+  &__role-text {
+    color: var(--color-primary);
+  }
+
+  &__cursor {
+    color: var(--color-primary);
+    animation: blink 1s step-end infinite;
+  }
+
+  &__bio {
+    max-width: 540px;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+    margin-bottom: 40px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 20px;
+
+    a {
+      color: var(--color-text-muted);
+      transition: color var(--transition), transform var(--transition);
+
+      &:hover {
+        color: var(--color-primary);
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  &__scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+
+    @media (max-width: 600px) { display: none; }
+  }
+
+  &__scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--color-primary), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes scrollLine {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
